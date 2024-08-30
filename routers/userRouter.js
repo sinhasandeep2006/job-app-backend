@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Route to handle user signup
-router.post('/api/users/signup', upload.single('resume'), async (req, res) => {
+router.post('signup', upload.single('resume'), async (req, res) => {
     const { name, email, phone } = req.body;
     const resume = req.file ? req.file.path : null;
 
@@ -31,3 +31,24 @@ router.post('/api/users/signup', upload.single('resume'), async (req, res) => {
 });
 
 module.exports = router;
+
+app.post('/api/users/signup', async (req, res) => {
+    try {
+      const { name, email, phone } = req.body;
+      const resume = req.file;
+  
+      if (!name || !email || !phone || !resume) {
+        return res.status(400).json({ message: 'All fields are required' });
+      }
+  
+      // Database operation here
+      const user = new User({ name, email, phone, resume: resume.filename });
+      await user.save();
+  
+      res.status(201).json({ message: 'User registered successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
+  

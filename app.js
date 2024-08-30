@@ -8,16 +8,11 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: 'https://job-ap-drab.vercel.app/', // Replace with your frontend's URL
+    origin: 'https://job-app-forntend.vercel.app', // Replace with your frontend's URL
     methods: ['GET', 'POST'],
     credentials: true,
   }));
 app.use(express.json());
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://job-ap-drab.vercel.app");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -29,7 +24,7 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 // Routes
-app.use('/api/users', userRoutes);
+app.use('/', userRoutes);
 
 // Static folder for uploads
 app.use('/uploads', express.static('uploads'));

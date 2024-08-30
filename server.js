@@ -1,7 +1,7 @@
 const app = require('./app');
 const cors = require('cors');
 app.use(cors({
-  origin: 'https://job-app-backend-1-8g7u.onrender.com', 
+  origin: 'https://job-app-forntend.vercel.app/', 
   optionsSuccessStatus: 200,
 }));
 const PORT = process.env.PORT || 5000;

@@ -7,7 +7,11 @@ const userRoutes = require('./routers/userRouter');
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://job-app-forntend.vercel.app', // Replace with your frontend's URL
+    methods: ['GET', 'POST'],
+    credentials: true,
+  }));
 app.use(express.json());
 
 // Connect to MongoDB

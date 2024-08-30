@@ -11,7 +11,7 @@ app.use(cors({
     origin: 'https://job-app-forntend.vercel.app', // Replace with your frontend's URL
     methods: ['GET', 'POST'],
     credentials: true,
-  }));
+}));
 app.use(express.json());
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {

@@ -30,4 +30,4 @@ router.post('/signup', upload.single('resume'), async (req, res) => {
     }
 });
 
-  module.exports = router;
+module.exports = router;

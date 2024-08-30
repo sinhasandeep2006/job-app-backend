@@ -30,9 +30,9 @@ router.post('signup', upload.single('resume'), async (req, res) => {
     }
 });
 
-module.exports = router;
 
-app.post('/api/users/signup', async (req, res) => {
+
+router.post('/api/users/signup', async (req, res) => {
     try {
       const { name, email, phone } = req.body;
       const resume = req.file;
@@ -52,3 +52,4 @@ app.post('/api/users/signup', async (req, res) => {
     }
   });
   
+  module.exports = router;

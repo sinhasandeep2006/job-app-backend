@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: 'https://job-app-forntend-mr4p.vercel.app', // Replace with your frontend's URL
+    origin: 'https://job-ap-drab.vercel.app/', // Replace with your frontend's URL
     methods: ['GET', 'POST'],
     credentials: true,
   }));
